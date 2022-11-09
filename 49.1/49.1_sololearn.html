@@ -1,0 +1,130 @@
+
+<!-- En esta leccion hacemos nuestra primer animacioón con JS, el código es el mismo que esta en la leccion 49.1 del curso de JavaScript de Sololearn; -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leccion 49.1</title>
+</head>
+<body>
+
+    <!-- Esto es el CSS -->
+    <style>
+        #container {
+            width: 201px;
+            height: 200px;
+            left: 40vw;
+            top: 40vh;
+            background: rgb(90, 209, 90);
+            position: relative;
+        }
+
+        #box {
+            width: 50px;
+            height: 50px;
+            top: 25px;
+            border-radius: 50%;
+            background: rgb(185, 0, 0);
+            position: absolute;
+        }
+
+        /* #box:before {
+            content: '';
+            width: 20px;
+            height: 100px;
+            left: 30%;
+            top: 25%;
+            border-radius: 0 0 10px 10px;
+            background: black;
+            position: absolute;
+        } */
+    </style>
+
+    <!-- Esto es el HTML -->
+    <div id="container">
+        <div id="box"> </div>
+    </div>
+
+
+    <!-- Esto es el JavaScript -->
+    <script>
+
+        // starting position:
+        var pos = 0;
+        let i = 0;
+        let r = 25;
+
+        // our box element:
+        var box = document.getElementById("box");
+        
+        // shows FPS:
+        var fps = document.createElement("H2");
+        let rand = Math.random();
+        var times = rand * 50;
+        container.appendChild(fps);
+
+        // sound:
+        var audio = new Audio("./pip3.mp3");
+        var audiog = new Audio("./pip3g.mp3");
+        var audiog2 = new Audio("./pip3g2.mp3");
+        var audiog2cut = new Audio("./pip3g2cut.mp3");
+        
+
+        function move() {
+            
+            if (pos < 150) {
+                pos += 25;
+                i += 25;
+                box.style.top = i + "px";
+            }
+            else if (pos == 150) {
+                audiog2.play();
+                pos += 25;
+                i += 25;
+            }
+            else if (pos > 150 && pos <= 275) {
+                pos += 25;
+                i -= 25;
+                box.style.top = i + "px";
+            }
+            else if (pos > 275 && pos < 425) {
+                pos += 25;
+                i += 25;
+                box.style.top = i + "px";
+            }
+            else if (pos == 425) {
+                audiog2.play();
+                pos += 25;
+                i += 25;
+            }
+            else if (pos > 425 && pos < 550) {
+                pos += 25;
+                i -= 25;
+                box.style.top = i + "px";
+            }
+            else if (pos >= 550) {
+                audiog2.play();
+                pos = 0;
+                i = 0;
+                r = 25;
+                box.style.left = i + "px";
+                box.style.top = r + "px";
+            }
+
+            fps.innerHTML = 'FPS: ' + Math.round((1000/times));
+        }
+
+        
+        let t = setInterval(move, times);
+        
+
+        
+        
+
+    </script>
+    
+</body>
+</html>

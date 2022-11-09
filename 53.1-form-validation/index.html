@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Form Validaton</title>
+</head>
+<body>
+    <!-- El elemento <form> tiene un evento 'onsubmit' que puede ser ejecutado para efectuar validacion.
+        Vamos a crear un formulario con dos entradas y un boton. El texto en ambos campos debe ser el mismo y no pueden estar en blanco para pasar la validación. -->
+
+        <form onsubmit="return validate()" method="post">
+            Number: <input type="text" name="num1" id="num1">
+            <br><br>
+            Repeat Number: <input type="text" name="num2" id="num2">
+            <br><br>
+            <input type="submit" value="Submit">
+        </form> 
+
+        <script>
+            // Ahora creamos la funcion validate() ;
+
+            function validate() {
+                var n1 = document.getElementById("num1");
+                var n2 = document.getElementById("num2");
+
+                if (n1.value != "" && n2.value != "") {
+                    if (n1.value == n2.value) {
+                        return true;
+                    }
+                }
+                alert("The values should be equal and not blank");
+                
+                return false;
+            }
+
+        </script>
+
+    
+</body>
+</html>
